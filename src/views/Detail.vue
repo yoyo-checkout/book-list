@@ -3,24 +3,44 @@
 
     <div class="flex items-center my-3">
       <div class="label mr-5 text-lg font-bold">價格</div>
-      <button class="btn w-10 h-10 border hover:bg-gray-200 rounded-full focus:outline-none transition duration-200">-</button>
-      <input
-        type="number"
-        class="block mx-3 px-5 py-3 w-40 focus:outline-none rounded-md bg-gray-100"
-        :value="bookDetail.price"
+      <button
+        class="btn w-10 h-10 border hover:bg-gray-200 rounded-full focus:outline-none transition duration-200"
+        @click="substract('price')"
       >
-      <button class="btn w-10 h-10 border hover:bg-gray-200 rounded-full focus:outline-none transition duration-200">+</button>
+        -
+      </button>
+
+      <div class="block mx-3 px-5 py-3 w-40 focus:outline-none rounded-md bg-gray-100">
+        {{ bookDetail.price }}
+      </div>
+
+      <button
+        class="btn w-10 h-10 border hover:bg-gray-200 rounded-full focus:outline-none transition duration-200"
+        @click="add('price')"
+      >
+        +
+      </button>
     </div>
 
     <div class="flex items-center my-3">
       <div class="label mr-5 text-lg font-bold">數量</div>
-      <button class="btn w-10 h-10 border hover:bg-gray-200 rounded-full focus:outline-none transition duration-200">-</button>
-      <input
-        type="number"
-        class="block mx-3 px-5 py-3 w-40 focus:outline-none rounded-md bg-gray-100"
-        :value="bookDetail.count"
+      <button
+        class="btn w-10 h-10 border hover:bg-gray-200 rounded-full focus:outline-none transition duration-200"
+        @click="substract('count')"
       >
-      <button class="btn w-10 h-10 border hover:bg-gray-200 rounded-full focus:outline-none transition duration-200">+</button>
+        -
+      </button>
+
+      <div class="block mx-3 px-5 py-3 w-40 focus:outline-none rounded-md bg-gray-100">
+        {{ bookDetail.count }}
+      </div>
+
+      <button
+        class="btn w-10 h-10 border hover:bg-gray-200 rounded-full focus:outline-none transition duration-200"
+        @click="add('count')"
+      >
+        +
+      </button>
     </div>
 
     <div class="text-right">
@@ -33,6 +53,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'Detail',
   data() {
@@ -43,6 +64,18 @@ export default {
         count: 20,
       },
     };
+  },
+  methods: {
+    add(type) {
+      this.bookDetail[type]++;
+    },
+    substract(type) {
+      const remain = this.bookDetail[type];
+
+      if (!remain) return;
+
+      this.bookDetail[type]--;
+    },
   },
 }
 </script>
