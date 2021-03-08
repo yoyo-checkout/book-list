@@ -17,6 +17,6 @@ git add -A
 git commit -m 'deploy'
 
 # 部署到 https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:yoyo-checkout/books.git master:gh-pages
+git push -f git@github.com:yoyo-checkout/book-list.git master:gh-pages
 
 cd -

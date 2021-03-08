@@ -1,3 +1,5 @@
 module.exports = {
-  publicPath: '/books/',
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/book-list/'
+    : '/',
 };
