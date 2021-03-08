@@ -2,45 +2,23 @@
   <div class="detail mt-5 py-5 px-3 border rounded">
 
     <div class="flex items-center my-3">
-      <div class="label mr-5 text-lg font-bold">價格</div>
-      <button
-        class="btn w-10 h-10 border hover:bg-gray-200 rounded-full focus:outline-none transition duration-200"
-        @click="substract('price')"
-      >
-        -
-      </button>
+      <ItemLabel>價格</ItemLabel>
 
-      <div class="block mx-3 px-5 py-3 w-40 focus:outline-none rounded-md bg-gray-100">
-        {{ bookDetail.price }}
-      </div>
+      <CircleButton @click.native="substract('price')">-</CircleButton>
 
-      <button
-        class="btn w-10 h-10 border hover:bg-gray-200 rounded-full focus:outline-none transition duration-200"
-        @click="add('price')"
-      >
-        +
-      </button>
+      <ItemCount>{{ bookDetail.price }}</ItemCount>
+
+      <CircleButton @click.native="add('price')">+</CircleButton>
     </div>
 
     <div class="flex items-center my-3">
-      <div class="label mr-5 text-lg font-bold">數量</div>
-      <button
-        class="btn w-10 h-10 border hover:bg-gray-200 rounded-full focus:outline-none transition duration-200"
-        @click="substract('count')"
-      >
-        -
-      </button>
+      <ItemLabel>數量</ItemLabel>
 
-      <div class="block mx-3 px-5 py-3 w-40 focus:outline-none rounded-md bg-gray-100">
-        {{ bookDetail.count }}
-      </div>
+      <CircleButton @click.native="substract('count')">-</CircleButton>
 
-      <button
-        class="btn w-10 h-10 border hover:bg-gray-200 rounded-full focus:outline-none transition duration-200"
-        @click="add('count')"
-      >
-        +
-      </button>
+      <ItemCount>{{ bookDetail.count }}</ItemCount>
+
+      <CircleButton @click.native="add('count')">+</CircleButton>
     </div>
 
     <div class="text-right">
@@ -53,8 +31,17 @@
 </template>
 
 <script>
+import ItemLabel from '@/components/detail/ItemLabel';
+import ItemCount from '@/components/detail/ItemCount';
+import CircleButton from '@/components/detail/CircleButton';
+
 export default {
   name: 'Detail',
+  components: {
+    ItemLabel,
+    ItemCount,
+    CircleButton,
+  },
   data() {
     return {
       bookDetail: {
