@@ -9,15 +9,21 @@ const state = {
 const actions = {
   async getBooks({ commit }) {
     try {
+      commit('globalVuex/SET_IS_LOADING', true, { root: true });
+
       const data = await api.fetchBooks();
 
       commit('SET_BOOKS', data);
     } catch (error) {
       console.log('Error Request.');
+    } finally {
+      commit('globalVuex/SET_IS_LOADING', false, { root: true });
     }
   },
   async getBook({ commit }, payload) {
     try {
+      commit('globalVuex/SET_IS_LOADING', true, { root: true });
+
       const detail = await api.fetchBookDetail(payload);
       const profile = await api.fetchBookProfile(payload);
 
@@ -27,15 +33,21 @@ const actions = {
       console.log('Error Request.');
 
       payload.vm.$router.replace({ name: 'Home' });
+    } finally {
+      commit('globalVuex/SET_IS_LOADING', false, { root: true });
     }
   },
   async updateBook({ commit }, payload) {
     try {
+      commit('globalVuex/SET_IS_LOADING', true, { root: true });
+
       const data = await api.updateBookProfile(payload);
     } catch (error) {
       console.log('Error Request.');
 
       payload.vm.$router.replace({ name: 'Home' });
+    } finally {
+      commit('globalVuex/SET_IS_LOADING', false, { root: true });
     }
   },
 };

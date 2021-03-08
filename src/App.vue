@@ -8,21 +8,29 @@
     </main>
 
     <Footer />
+    <LoadingLayer v-show="isLoading" />
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import LoadingLayer from '@/components/layout/LoadingLayer';
 import BookList from '@/components/layout/BookList';
 
 export default {
   components: {
     Header,
     Footer,
+    LoadingLayer,
     BookList,
+  },
+  computed: {
+    ...mapState('globalVuex', {
+      isLoading: state => state.isLoading,
+    }),
   },
   created() {
     this.getBooks();
