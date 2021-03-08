@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import BookList from '@/components/layout/BookList';
@@ -21,6 +23,14 @@ export default {
     Header,
     Footer,
     BookList,
+  },
+  created() {
+    this.getBooks();
+  },
+  methods: {
+    ...mapActions('book', [
+      'getBooks',
+    ]),
   },
 };
 </script>
