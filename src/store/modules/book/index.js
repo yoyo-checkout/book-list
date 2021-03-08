@@ -27,6 +27,13 @@ const actions = {
       console.log('Error Request.');
     }
   },
+  async updateBook({ commit }, payload) {
+    try {
+      const data = await api.updateBookProfile(payload);
+    } catch (error) {
+      console.log('Error Request.');
+    }
+  },
 };
 
 const mutations = {

@@ -23,7 +23,10 @@
     </div>
 
     <div class="text-right">
-      <button class="px-5 py-3 text-green-500 hover:text-white hover:bg-green-500 border-2 border-green-500 focus:outline-none rounded-lg transition duration-200">
+      <button
+        class="px-5 py-3 text-green-500 hover:text-white hover:bg-green-500 border-2 border-green-500 focus:outline-none rounded-lg transition duration-200"
+        @click="update"
+      >
         確認修改
       </button>
     </div>
@@ -73,6 +76,7 @@ export default {
   methods: {
     ...mapActions('book', [
       'getBook',
+      'updateBook',
     ]),
     ...mapMutations('book', [
       'SET_BOOK_DETAIL',
@@ -80,14 +84,25 @@ export default {
     ]),
 
     add(type) {
-      this.bookDetail[type]++;
+      this.SET_BOOK_PROFILE({
+        ...this.bookProfile,
+        [type]: parseInt(this.bookProfile[type]) + 1,
+      });
     },
     substract(type) {
-      const remain = this.bookDetail[type];
+      const remain = this.bookProfile[type];
 
       if (!remain) return;
 
-      this.bookDetail[type]--;
+      this.SET_BOOK_PROFILE({
+        ...this.bookProfile,
+        [type]: parseInt(this.bookProfile[type]) - 1,
+      });
+    },
+    update() {
+      this.updateBook({
+        ...this.bookProfile,
+      });
     },
   },
 }
