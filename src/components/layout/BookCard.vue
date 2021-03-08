@@ -3,7 +3,8 @@
     <router-link
       :to="{ name: 'Detail', params: { bookId }}"
       :title="bookName"
-      class="block bg-white border rounded overflow-hidden"
+      :class="[ isSelected ? 'border-2' : 'border', { 'border-green-500': isSelected }]"
+      class="block bg-white rounded overflow-hidden"
     >
 
       <div class="card__image-container relative overflow-hidden">
@@ -37,7 +38,12 @@ export default {
       type: String,
       required: true,
     },
-  }
+  },
+  computed: {
+    isSelected() {
+      return parseInt(this.$route.params.bookId) === this.bookId;
+    },
+  },
 };
 </script>
 
