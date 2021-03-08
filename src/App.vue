@@ -8,7 +8,14 @@
     </main>
 
     <Footer />
+
     <LoadingLayer v-show="isLoading" />
+
+    <NotificationCard
+      v-show="notificationCard.isShow"
+      :cardType="notificationCard.type"
+      :text="notificationCard.text"
+    />
   </div>
 </template>
 
@@ -18,6 +25,7 @@ import { mapState, mapActions } from 'vuex';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import LoadingLayer from '@/components/layout/LoadingLayer';
+import NotificationCard from '@/components/layout/NotificationCard';
 import BookList from '@/components/layout/BookList';
 
 export default {
@@ -25,11 +33,13 @@ export default {
     Header,
     Footer,
     LoadingLayer,
+    NotificationCard,
     BookList,
   },
   computed: {
     ...mapState('globalVuex', {
       isLoading: state => state.isLoading,
+      notificationCard: state => state.notificationCard,
     }),
   },
   created() {

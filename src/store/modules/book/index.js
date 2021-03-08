@@ -41,11 +41,17 @@ const actions = {
     try {
       commit('globalVuex/SET_IS_LOADING', true, { root: true });
 
-      const data = await api.updateBookProfile(payload);
+      await api.updateBookProfile(payload);
+
+      commit('globalVuex/SET_NOTIFICATION_CARD', { key: 'isShow', val: true }, { root: true });
+      commit('globalVuex/SET_NOTIFICATION_CARD', { key: 'type', val: 'success' }, { root: true });
+      commit('globalVuex/SET_NOTIFICATION_CARD', { key: 'text', val: '修改成功' }, { root: true });
     } catch (error) {
       console.log('Error Request.');
 
-      payload.vm.$router.replace({ name: 'Home' });
+      commit('globalVuex/SET_NOTIFICATION_CARD', { key: 'isShow', val: true }, { root: true });
+      commit('globalVuex/SET_NOTIFICATION_CARD', { key: 'type', val: 'error' }, { root: true });
+      commit('globalVuex/SET_NOTIFICATION_CARD', { key: 'text', val: '修改失敗' }, { root: true });
     } finally {
       commit('globalVuex/SET_IS_LOADING', false, { root: true });
     }
