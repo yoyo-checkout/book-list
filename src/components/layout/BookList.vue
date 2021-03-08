@@ -5,6 +5,7 @@
       <BookCard
         v-for="book in books"
         :key="book.id"
+        :bookId="book.id"
         :bookName="book.name"
         :bookImg="book.image"
       />
