@@ -37,7 +37,7 @@ npm run serve
 ```
 
 ## axios
-> 透過 axios 建立實例，統一例外處理，方便管理
+透過 axios 建立實例，統一例外處理，方便管理
 
 ## tailwind
-> 方便快速增減樣式，且相較其他 style libraries 更容易客製化
+方便快速增減樣式，且相較其他 style libraries 更容易客製化
