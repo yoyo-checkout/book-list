@@ -15,7 +15,7 @@
 
       <div class="p-3">
         <hr class="my-3" />
-        <h3 class="card__title text-sm md:text-xl font-medium leading-6 text-left">{{ bookName }}</h3>
+        <h3 class="card__title text-sm md:text-xl font-medium leading-6">{{ bookName }}</h3>
       </div>
 
     </router-link>
