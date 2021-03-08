@@ -1,5 +1,5 @@
 <template>
-  <div class="detail mt-5 py-5 px-3 border rounded">
+  <div id="detailBlock" class="detail mt-5 py-5 px-3 border rounded">
     <h3 class="mb-10 text-2xl font-bold">{{ bookDetail.name }}</h3>
 
     <div class="flex items-center my-3">
@@ -60,6 +60,10 @@ export default {
       id: this.$route.params.bookId,
     });
   },
+  mounted() {
+    // smoothly scroll to details block
+    this.scroll2Target(document.getElementById('detailBlock'));
+  },
   beforeRouteUpdate (to, from, next) {
     this.getBook({
       vm: this,
@@ -85,6 +89,12 @@ export default {
       'SET_BOOK_PROFILE',
     ]),
 
+    scroll2Target(target) {
+      window.scrollTo({
+        top: target.getBoundingClientRect().y,
+        behavior: 'smooth',
+      });
+    },
     add(type) {
       this.SET_BOOK_PROFILE({
         ...this.bookProfile,
