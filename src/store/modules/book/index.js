@@ -25,6 +25,8 @@ const actions = {
       commit('SET_BOOK_PROFILE', profile);
     } catch (error) {
       console.log('Error Request.');
+
+      payload.vm.$router.replace({ name: 'Home' });
     }
   },
   async updateBook({ commit }, payload) {
@@ -32,6 +34,8 @@ const actions = {
       const data = await api.updateBookProfile(payload);
     } catch (error) {
       console.log('Error Request.');
+
+      payload.vm.$router.replace({ name: 'Home' });
     }
   },
 };

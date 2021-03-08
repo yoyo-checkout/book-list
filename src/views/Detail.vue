@@ -56,11 +56,13 @@ export default {
   },
   created() {
     this.getBook({
+      vm: this,
       id: this.$route.params.bookId,
     });
   },
   beforeRouteUpdate (to, from, next) {
     this.getBook({
+      vm: this,
       id: to.params.bookId,
     });
 
@@ -101,6 +103,7 @@ export default {
     },
     update() {
       this.updateBook({
+        vm: this,
         ...this.bookProfile,
       });
     },
